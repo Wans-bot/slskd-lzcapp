@@ -1,0 +1,18 @@
+params:
+  - id: admin_username
+    type: string
+    name: "Web 登录账号"
+    description: "slskd Web 界面登录账号"
+    default_value: "slskd"
+  - id: admin_password
+    type: string
+    name: "Web 登录密码"
+    description: "slskd Web 界面登录密码，安装后请尽快修改"
+  - id: slsk_username
+    type: string
+    name: "Soulseek 账号"
+    description: "Soulseek 网络账号（需在 slsknet.org 注册）"
+  - id: slsk_password
+    type: string
+    name: "Soulseek 密码"
+    description: "Soulseek 网络账号密码"

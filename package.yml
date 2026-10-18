@@ -1,0 +1,50 @@
+package: cloud.lazycat.app.slskd
+version: 0.26.0-5
+name: slskd
+description: A modern client-server application for the Soulseek file-sharing network.
+author: slskd
+license: AGPL-3.0
+homepage: https://github.com/slskd/slskd
+locales:
+  zh-CN:
+    name: slskd
+    description: slskd 是一个现代、开源的 Soulseek 文件共享网络客户端，提供 Web 搜索、下载、共享管理与聊天功能。
+    usage: |
+      slskd 是一个基于 Web 的 Soulseek 客户端，可用于搜索和下载音乐等共享文件。
+
+      首次使用：
+      1. 安装时填写你在 Soulseek 网络的账号密码（slskd 不会自动注册）
+      2. 打开应用后使用 Web 界面管理员账号登录（默认 slskd / slskd，安装或首次登录后请及时修改）
+      3. 进入 Settings 可配置下载目录、共享目录、下载/上传限速等
+
+      说明：
+      - 配置保存在 /lzcapp/var 下，下载和共享文件直接保存到懒猫网盘文稿目录，升级不会丢失
+      - 首次连接 Soulseek 网络可能需要等待片刻
+  en-US:
+    name: slskd
+    description: >-
+      A modern client-server application for the Soulseek file-sharing network
+      with a web interface.
+    usage: |
+      slskd is a modern, self-hosted web client for the Soulseek file-sharing network:
+      search for music and other shared files and queue them for download.
+
+      Getting started:
+      1. Provide your Soulseek account (register at slsknet.org) during installation.
+         slskd does not create accounts for you.
+      2. Open the app; the web UI login is filled in automatically. The default
+         web credentials are slskd / slskd - change them in Settings when you can.
+      3. In Settings you can configure the download folder, shared folders and
+         upload/download speed limits.
+
+      Notes:
+      - Configuration is stored under /lzcapp/var and survives upgrades.
+      - Downloaded files and your shared folder are written directly into this
+         app's documents folder, so you can browse and manage them from the
+         LazyCat netdisk. Each user gets their own instance (multi-instance).
+      - The first connection to the Soulseek network can take a moment.
+permissions:
+  required:
+    - net.internet
+  optional:
+    - document.private

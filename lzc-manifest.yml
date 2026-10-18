@@ -1,0 +1,53 @@
+usage: slskd
+application:
+  subdomain: slskd
+  multi_instance: true
+  health_check:
+    test_url: http://slskd:5030/health
+    disable: false
+    start_period: 60s
+    timeout: 5s
+  upstreams:
+    - location: /
+      backend: http://slskd:5030
+  injects:
+    - id: login-autofill
+      auth_required: false
+      when:
+        - /
+      do:
+        - src: builtin://simple-inject-password
+          params:
+            user: '{{ index .U "admin_username" }}'
+            password: '{{ index .U "admin_password" }}'
+    - id: fix-relative-favicon
+      on: request
+      auth_required: false
+      when:
+        - "/*"
+      do: |
+        if (!ctx.request.path.endsWith("/favicon.ico") || ctx.request.path === "/favicon.ico") return;
+        ctx.response.send(302, "", { location: "/favicon.ico" });
+services:
+  slskd:
+    image: registry.lazycat.cloud/wans/slskd/slskd:6df53d185bf899b6
+    environment:
+      SLSKD_REMOTE_CONFIGURATION: "true"
+      SLSKD_HTTP_PORT: "5030"
+      SLSKD_NO_HTTPS: "true"
+      SLSKD_APP_DIR: /app
+      SLSKD_USERNAME: '{{ index .U "admin_username" }}'
+      SLSKD_PASSWORD: '{{ index .U "admin_password" }}'
+      SLSKD_SLSK_USERNAME: '{{ index .U "slsk_username" }}'
+      SLSKD_SLSK_PASSWORD: '{{ index .U "slsk_password" }}'
+      TZ: Asia/Shanghai
+    binds:
+      - /lzcapp/var/slskd:/app
+      - /lzcapp/documents/{{ .S.DeployUID }}:/app/downloads
+      - /lzcapp/documents/{{ .S.DeployUID }}:/app/shared
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1:5030/health >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
