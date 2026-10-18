@@ -30,7 +30,8 @@ application:
         ctx.response.send(302, "", { location: "/favicon.ico" });
 services:
   slskd:
-    image: registry.lazycat.cloud/wans/slskd/slskd:6df53d185bf899b6
+    # upstream: ghcr.io/slskd/slskd:0.26.1
+    image: registry.lazycat.cloud/wans/slskd/slskd:1bea9d71c6e57f08
     environment:
       SLSKD_REMOTE_CONFIGURATION: "true"
       SLSKD_HTTP_PORT: "5030"

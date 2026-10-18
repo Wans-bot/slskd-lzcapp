@@ -1,5 +1,5 @@
 package: cloud.lazycat.app.slskd
-version: 0.26.0-5
+version: 0.26.1
 name: slskd
 description: A modern client-server application for the Soulseek file-sharing network.
 author: slskd
@@ -23,8 +23,7 @@ locales:
   en-US:
     name: slskd
     description: >-
-      A modern client-server application for the Soulseek file-sharing network
-      with a web interface.
+      A modern client-server application for the Soulseek file-sharing network with a web interface.
     usage: |
       slskd is a modern, self-hosted web client for the Soulseek file-sharing network:
       search for music and other shared files and queue them for download.
