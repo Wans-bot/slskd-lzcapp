@@ -30,10 +30,19 @@ images:
 stores:
   official:
     enabled: true
-    skip_if_version_exists: true
-    create_if_missing: true
-    changelog_locales:
-      - zh-CN
-      - en-US
+    application:
+      brief: "音乐共享下载"
+      description: "slskd 是 Soulseek 的网页客户端：搜索并下载共享音乐，管理上传队列与好友列表。"
+      keywords:
+        - "音乐"
+        - "Soulseek"
+        - "P2P"
+        - "下载"
+        - "共享"
+      support_pc: true
+      screenshot_pc_files:
+        - ".github/screenshots/pc-1.png"
+        - ".github/screenshots/pc-2.png"
+        - ".github/screenshots/pc-3.png"
   private:
     enabled: false
